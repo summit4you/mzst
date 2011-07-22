@@ -1,0 +1,17 @@
+.x-progress-div
+{
+	white-space:normal; 
+	width:350px;
+	margin:0 auto;
+}
+.x-progress-text 
+{
+	vertical-align:middle;
+    line-height:31px;
+    text-align:center;
+    margin: 70px
+}
+.x-progress-canvas
+{
+	vertical-align:middle;
+}
