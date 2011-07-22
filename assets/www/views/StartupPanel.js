@@ -10,6 +10,12 @@ mzst.views.StartupPanel = Ext.extend(Ext.Panel,{
         
         mzst.views.progressbar.on('complete', function(myVariable){
             mzst.views.progressbar.destroy();
+            Ext.apply(this, {
+                items: [
+                         
+                         
+                ]
+            });
         });
 
         // Let's add our view to the Viewport.

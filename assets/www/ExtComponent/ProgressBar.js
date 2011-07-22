@@ -280,7 +280,7 @@ mzst.ProgressBar = Ext.extend(Ext.Component, {
     
     destroy: function(){
         
-        Ext.ProgressBar.superclass.destroy.call(this);
+        mzst.ProgressBar.superclass.destroy.call(this);
     }
 
 });
