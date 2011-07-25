@@ -5,7 +5,7 @@ mzst.ProgressBar = Ext.extend(Ext.Component, {
      */
     id: 'mzst_progressbar',
     
-    value: 0,
+    value: 100,
     
     /**
      * @cfg {String} text Text to show in the progress bar. Defaults to <tt>''</tt>.
@@ -25,6 +25,8 @@ mzst.ProgressBar = Ext.extend(Ext.Component, {
     initial_y : 20,
     
     res : 0,
+    
+    autoDestory: true,
 
     
     renderTpl: new Ext.XTemplate(
