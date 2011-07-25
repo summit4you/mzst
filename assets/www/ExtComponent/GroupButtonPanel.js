@@ -17,7 +17,7 @@ mzst.GroupButtonPanel = Ext.extend(Ext.Panel, {
  
         // Before parent code
         this.addButton(new Ext.Button({iconMask: true, ui: 'plain', iconCls: 'add', width:'100', height: '100',text:'添加'}), '添加');
-        this.addButton(new Ext.Button({ text:'物业信息', badgeText: '12' }), '物业信息');
+        this.addButton(new Ext.Button({ text:'物业信息', badgeText: '12', handler: gowyInfoListPage }), '物业信息');
         this.addButton(new Ext.Button({ text:'二手物品交换', badgeText: '3' }), '二手物品交换');
         this.addButton(new Ext.Button({ text:'生活便利电活' , badgeText: '4'}), '生活便利电活');
         this.addButton(new Ext.Button({ text:'小区活动' , badgeText: '1'}), '小区活动');

@@ -1,6 +1,6 @@
 var tapHandler = function(button, event) {
             var txt = "User tapped the '" + button.text + "' button.";
-            Ext.getCmp('toolbartxt').update(txt);
+            Ext.getCmp('main-panel').update(txt);
         };
 
 var bottombuttonsGroup = [{
@@ -50,10 +50,7 @@ var bottombuttonsGroup = [{
 mzst.views.MainPanel = Ext.extend(Ext.Panel,{
     layout: 'fit',
    
-    id:'toolbartxt',
-    
-   
-   
+    id:'main-panel',
     
     dockedItems: [{
         xtype: 'toolbar',

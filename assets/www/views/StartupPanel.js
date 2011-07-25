@@ -12,9 +12,22 @@ mzst.views.StartupPanel = Ext.extend(Ext.Panel,{
            // mzst.views.progressbar.destroy();
             this.destroy();
             
+            
+            
             mzst.views.mainpanel = new mzst.views.MainPanel();
+            mzst.views.carouselpanel =  new Ext.Carousel({
+                id: 'carousel-panel',
+                layout:'card',
+               // fullscreen: true,
+               // cardSwitchAnimation: 'slide',
+                items: [
+                            mzst.views.mainpanel
+                    ]
+                });
+            mzst.views.wyinfolistpanel = new mzst.views.WYInfoListPanel()
+            mzst.views.carouselpanel.add( mzst.views.wyinfolistpanel);
             var sPan = Ext.getCmp('startup-panel'); // Instead of single obj will be better
-            sPan.add( mzst.views.mainpanel );
+            sPan.add( mzst.views.carouselpanel );
            
             sPan.doLayout();
           /*  var p = new Ext.Panel({scroll: 'vertical',});
