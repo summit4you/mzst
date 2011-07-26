@@ -1,9 +1,41 @@
+/* proxy: new Ext.data.ScriptTagProxy({
+            url: 'http://www.vinylfox.com/yui-ext/examples/grid-paging/grid-paging-data.php'
+        }),
+ 
+        reader: new Ext.data.JsonReader({
+            root: 'results',
+            totalProperty: 'total',
+            id: 'id'
+        }, [
+            {name: 'employee_name', mapping: 'name'},
+            {name: 'job_title', mapping: 'title'},
+            {name: 'hire_date', mapping: 'hire_date', type: 'date', dateFormat: 'm-d-Y'},
+            {name: 'is_active', mapping: 'active'}
+        ])
+ 
+    }); 
+*/
+
+var paging = new Ext.plugins.ListPagingPlugin({
+    loadMoreText: '更多...', 
+    autoPaging: false,
+    onPagingTap: function(){
+        var list = Ext.getCmp("mzst_wy_info_list_inner_list");
+        list.store.removeAll();
+       // list.store.add(mzst.stores.wyinfo);
+        //list.store.load({params:{start:0, limit:25}});
+    }
+});
+
 // This is the list item inside in the main list.  It is created for every record in the model, or simply
 // each item in the array returned from the Instagram API.
-mzst.views.WYInfoInnerList = Ext.extend(Ext.List, {
+mzst.views.WYInfoListInnerList = Ext.extend(Ext.List, {
 
+    id: "mzst_wy_info_list_inner_list",
     // Each item in the InnerList will be rendered with our imgTpl() declared in our Templates.js file.
     itemTpl: mzst.views.wyInfoInnerListItemTpl(),
+    
+    scroll: 'vertical',
 
     // The class name associated with each InnerList item.  We can style using this as the root CSS class for
     // all styles inside the InnerList items.
@@ -12,7 +44,7 @@ mzst.views.WYInfoInnerList = Ext.extend(Ext.List, {
     // Here's where we add the pull to refresh plugin.  Yep, that's all you need to do. =)
     plugins: [{
         ptype: 'pullrefresh'
-    }]
+    }, paging]
 
     
 });
@@ -41,6 +73,8 @@ var bottombuttonsGroup = [{
             ]
         }];
 
+
+
 mzst.views.WYInfoListPanel = Ext.extend(Ext.Panel,{
     layout: 'fit',
     id: 'wy-info-list-panel',
@@ -52,12 +86,9 @@ mzst.views.WYInfoListPanel = Ext.extend(Ext.Panel,{
         ui: 'dark',
         iconCls: 'info',
         cls: 'card1',
-        items: [{ iconMask: true, ui: 'back', iconCls: 'reply', handler: goMainPage }].concat([{xtype: 'spacer'}]).concat([{ iconMask: true, iconCls: 'refresh'}])
-   },{
-       xtype: 'toolbar',
-       ui: 'dark',
-       items: [{xtype: 'spacer'}].concat([{text:'更多'}]).concat([{xtype: 'spacer'}]),
-       dock: 'top'
+        items: [{ iconMask: true, ui: 'back', iconCls: 'reply', handler: goMainPage }].concat([{xtype: 'spacer'}]).concat([{ iconMask: true, iconCls: 'refresh',handler: function() {                                   
+            Ext.getCmp("mzst_wy_info_list_inner_list").store.read()
+        } }])
    },
    {
        xtype: 'toolbar',
@@ -71,5 +102,5 @@ mzst.views.WYInfoListPanel = Ext.extend(Ext.Panel,{
        items: [{xtype: 'spacer'}].concat(bottombuttonsGroup).concat([{xtype: 'spacer'}])
        
        }],
-    items: [ new mzst.views.WYInfoInnerList({store: mzst.stores.wyinfo })]
+    items: [ new mzst.views.WYInfoListInnerList({store: mzst.stores.wyinfo })]
 });

@@ -1,9 +1,15 @@
+// maybe use controller will be better
+
 function changeCarouselItem(id){
-    Ext.getCmp('carousel-panel').setActiveItem(id);
+    Ext.getCmp('carousel-panel').setActiveItem(id,{ type: 'flip', direction: 'right' });
 }
 
-function gowyInfoListPage(){
+function goWYInfoListPage(){
     changeCarouselItem('wy-info-list-panel');
+}
+
+function goWYInfoDetailPage(){
+    changeCarouselItem('wy-info-detail-panel');
 }
 
 function goMainPage(){

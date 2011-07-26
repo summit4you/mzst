@@ -104,8 +104,47 @@ a img {
 	color: #999;
 }
 
+.r_option {
+	float: right;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+ .entry { padding: 0 0 20px;}
+        .entry .title { padding: 5px 10px; border: 1px solid #CCCCCC; background: #FAFAFA; line-height: 200%; color:#006600; }
+        .entry h1 { font-size: 14px; }
+        .entry .article { padding: 0; width: 100%; color: #444; line-height: 180%; overflow: hidden; font-size:12px; }
+        .entry .resizeimg { padding: 10px 5px; }
+            .entry .resizeimg img { width: expression(this.width > 520 ? 520 : true); max-width: 520px; }
+            .entry .article p, .entry .article blockquote, .entry .article ul, .entry .article ol { margin: 1.5em 0; }
+            .entry .article ul, .entry .article ol { padding: 0 0 0 2em; line-height: 200%; }
+            .entry .article ul { list-style: disc; }
+            .entry .article ol { list-style: decimal; }
+            .entry .article a img { margin: 0 15px 15px 0; padding: 1px; border: 1px solid #FEE4AB; }
+            .entry .article a:hover img { border: 1px solid #C60; }
+            .entry .article blockquote { padding: 3px 20px 3px 50px; width: 70%; overflow: hidden; }
+            .entry .article td { font-size: 12px; }
+        .entry .status { padding: 10px; border-bottom: 1px solid #cccccc; color: #999; font-size: 12px; }
 
 
+/*************************************************COMMENTS***/
+.comments { padding: 20px 0;}
+.trace{margin:0;}
+  .trace h2 { padding: 0 0 10px; }
+  .trace .avatar_list { border: 1px solid #CCCCCC; background: #FAFAFA; }
+      .trace .avatar_list li { float: left; margin: 0 10px 0 0; width: 61px; }
+          .trace .avatar_list p { text-align: center; }
+
+.comments h2 { padding: 0 0 10px; border-bottom: 1px solid #CCCCCC;}
+    .comments_list .avatar48 { position: absolute; margin: 0 0 0 -63px; display: inline; }
+    .comments_list li { padding: 10px 10px 10px 63px; border-bottom: 1px solid #CCCCCC; font-size: 12px; line-height: 200%; overflow: hidden; }
+        .comments_list li .time { color: #999; font-size: 12px; }
+        .comments_list .title { margin: 0 0 10px; }
+        .comments_list .detail { color: #444; }
+        .comments_list .quote { padding: 10px; border: 1px solid #CCCCCC; background: #FAFAFA none repeat scroll 0 0; font-size: 12px; }
+        .comments_list .quote .q { background: none; }
+
+.searchbar { float: right; margin-right:10px }
 
 .x-progress-div
 {

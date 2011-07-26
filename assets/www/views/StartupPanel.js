@@ -24,8 +24,11 @@ mzst.views.StartupPanel = Ext.extend(Ext.Panel,{
                             mzst.views.mainpanel
                     ]
                 });
-            mzst.views.wyinfolistpanel = new mzst.views.WYInfoListPanel()
+            mzst.views.wyinfolistpanel = new mzst.views.WYInfoListPanel();
+            
             mzst.views.carouselpanel.add( mzst.views.wyinfolistpanel);
+            mzst.views.wyinfodetailpanel = new mzst.views.WYInfoDetailPanel();
+            mzst.views.carouselpanel.add( mzst.views.wyinfodetailpanel);
             var sPan = Ext.getCmp('startup-panel'); // Instead of single obj will be better
             sPan.add( mzst.views.carouselpanel );
            
