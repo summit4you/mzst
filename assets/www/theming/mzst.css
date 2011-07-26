@@ -1,3 +1,112 @@
+* { word-break: break-all; word-wrap: break-word; }
+
+div {
+	display: block;
+}
+
+
+body, th, td, input, select, textarea, button, span {
+	font: 12px/1.5em Verdana, "Lucida Grande", Arial, Helvetica, sans-serif;
+}
+
+h4 {
+	font-weight: bold;
+}
+
+.a_top, .a_share, .a_rss {
+	float: right;
+	margin-left: 4px;
+	padding: 0 18px 0 5px;
+	width: 50px;
+	height: 15px;
+	border: 1px solid #7F93BC;
+	background: white none no-repeat scroll right top;
+	line-height: 15px;
+	overflow: hidden;
+	display: inline;
+}
+
+.a_share {
+	background-image: url(images/share.gif);
+}
+
+.avatar48 img {
+	width: 48px;
+	height: 48px;
+}
+
+a {
+	color: #2C629E;
+	font-size: 12px; 
+}
+
+a img {
+	border: none;
+}
+/* 先整体往右移 */
+.entry_list {
+	margin: 0 0 20px; 
+	padding: 1px 0 1px 65px;
+	}
+/* 把图片往左移 */
+.entry_list .avatar48 { 
+	position: absolute; 
+	margin: 0 0 0 -65px; 
+}
+
+.entry_list h4 { 
+	font-size: 13px; display: inline; 
+}
+    
+.entry_list .title { 
+	padding: 5px 10px; border: 1px solid #CCCCCC; color:#006600; background: #FAFAFA; 
+}
+
+.entry_list .title a{
+	color:#006600; 
+	text-decoration:none
+}
+   
+.entry_list .time { 
+	color: #999; 
+	font-size: 12px; 
+}
+
+.entry_list .detail { 
+	padding: 10px 0; 
+	width: 100%; 
+	color: #444; 
+	font-size: 12px; 
+	line-height: 180%; 
+	overflow: hidden; 
+}
+
+.entry_list .image_right img { 
+	float: right; 
+	margin: 0 0 5px 5px; 
+	padding: 2px; 
+	max-width: 70px; 
+	max-height: 100px; 
+	border: 1px solid #DDD; 
+}
+
+* html .entry_list .image_right img { 
+	width: expression(this.width > 70 && this.width/this.height > 0.7 ? 70 : true); 
+	height: expression(this.height > 100 && this.width/this.height < 0.7 ? 100 : true);
+ }
+
+.entry_list .status { 
+	color: #999; 
+	font-size: 12px; 
+}
+
+.entry_list .status a { 
+	color: #999;
+}
+
+
+
+
 .x-progress-div
 {
 	white-space:normal; 
