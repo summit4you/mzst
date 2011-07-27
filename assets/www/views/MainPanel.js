@@ -52,6 +52,11 @@ mzst.views.MainPanel = Ext.extend(Ext.Panel,{
    
     id:'main-panel',
     
+    align: 'stretch',
+    
+    fullscreen: true,
+    
+    
     dockedItems: [{
         xtype: 'toolbar',
         // Note, you can pass in not only some text, but also a block of HTML, including a base64 encoded image.

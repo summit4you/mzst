@@ -25,10 +25,15 @@ mzst.views.StartupPanel = Ext.extend(Ext.Panel,{
                     ]
                 });
             mzst.views.wyinfolistpanel = new mzst.views.WYInfoListPanel();
-            
             mzst.views.carouselpanel.add( mzst.views.wyinfolistpanel);
             mzst.views.wyinfodetailpanel = new mzst.views.WYInfoDetailPanel();
             mzst.views.carouselpanel.add( mzst.views.wyinfodetailpanel);
+            mzst.views.secondhandlistpanel = new mzst.views.SecondhandListPanel();
+            mzst.views.carouselpanel.add( mzst.views.secondhandlistpanel);
+            mzst.views.secondhanddetailpanel = new mzst.views.SecondhandDetailPanel();
+            mzst.views.carouselpanel.add( mzst.views.secondhanddetailpanel);
+            mzst.views.addcomponentspanel = new mzst.views.AddComponentsPanel();
+            mzst.views.carouselpanel.add( mzst.views.addcomponentspanel);
             var sPan = Ext.getCmp('startup-panel'); // Instead of single obj will be better
             sPan.add( mzst.views.carouselpanel );
            

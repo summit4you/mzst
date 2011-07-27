@@ -29,11 +29,11 @@ var paging = new Ext.plugins.ListPagingPlugin({
 
 // This is the list item inside in the main list.  It is created for every record in the model, or simply
 // each item in the array returned from the Instagram API.
-mzst.views.WYInfoListInnerList = Ext.extend(Ext.List, {
+mzst.views.SecondhandListInnerList = Ext.extend(Ext.List, {
 
-    id: "mzst_wy_info_list_inner_list",
+    id: "mzst_second_hand_list_inner_list",
     // Each item in the InnerList will be rendered with our imgTpl() declared in our Templates.js file.
-    itemTpl: mzst.views.wyInfoInnerListItemTpl(),
+    itemTpl: mzst.views.SecondhandInnerListItemTpl(),
     
     scroll: 'vertical',
 
@@ -48,7 +48,7 @@ mzst.views.WYInfoListInnerList = Ext.extend(Ext.List, {
     
     onItemDisclosure: function (record) {
      // TODO: Render the selected note in the note editor.
-        goWYInfoDetailPage();
+        goSecondhandDetailPage();
     }
 
     
@@ -80,19 +80,19 @@ var bottombuttonsGroup = [{
 
 
 
-mzst.views.WYInfoListPanel = Ext.extend(Ext.Panel,{
+mzst.views.SecondhandListPanel = Ext.extend(Ext.Panel,{
     layout: 'fit',
-    id: 'wy-info-list-panel',
+    id: 'second-hand-list-panel',
     
     dockedItems: [{
         xtype: 'toolbar',
         // Note, you can pass in not only some text, but also a block of HTML, including a base64 encoded image.
-        title: '物业信息',
+        title: '二手信息',
         ui: 'dark',
         iconCls: 'info',
         cls: 'card1',
         items: [{ iconMask: true, ui: 'back', iconCls: 'reply', handler: goMainPage }].concat([{xtype: 'spacer'}]).concat([{ iconMask: true, iconCls: 'refresh',handler: function() {                                   
-            Ext.getCmp("mzst_wy_info_list_inner_list").store.read()
+            Ext.getCmp("mzst_second_hand_list_inner_list").store.read()
         } }])
    },
    {
@@ -107,5 +107,5 @@ mzst.views.WYInfoListPanel = Ext.extend(Ext.Panel,{
        items: [{xtype: 'spacer'}].concat(bottombuttonsGroup).concat([{xtype: 'spacer'}])
        
        }],
-    items: [ new mzst.views.WYInfoListInnerList({store: mzst.stores.wyinfo })]
+    items: [ new mzst.views.SecondhandListInnerList({store: mzst.stores.secondhand })]
 });

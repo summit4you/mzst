@@ -1,4 +1,5 @@
 mzst.GroupButtonPanel = Ext.extend(Ext.Panel, {
+    id:"mzst_group_button_panel",
     column_item: 3,
     scroll: 'vertical',
     button_list: [],
@@ -7,6 +8,7 @@ mzst.GroupButtonPanel = Ext.extend(Ext.Panel, {
     layout: {
         type: 'vbox'
         },
+    fullscreen: true,
     initComponent: function(){
        
         
@@ -16,17 +18,17 @@ mzst.GroupButtonPanel = Ext.extend(Ext.Panel, {
     onRender: function(){
  
         // Before parent code
-        this.addButton(new Ext.Button({iconMask: true, ui: 'plain', iconCls: 'add', width:'100', height: '100',text:'添加'}), '添加');
-        this.addButton(new Ext.Button({ text:'物业信息', badgeText: '12', handler: goWYInfoListPage }), '物业信息');
+        this.addButton(new Ext.Button({iconMask: true, ui: 'plain', iconCls: 'add', width:'100', height: '100',text:'添加', handler: goAddComponentsPanel}), '添加');
+       /* this.addButton(new Ext.Button({ text:'物业信息', badgeText: '12', handler: goWYInfoListPage }), '物业信息');
         this.addButton(new Ext.Button({ text:'二手物品交换', badgeText: '3' }), '二手物品交换');
         this.addButton(new Ext.Button({ text:'生活便利电活' , badgeText: '4'}), '生活便利电活');
         this.addButton(new Ext.Button({ text:'小区活动' , badgeText: '1'}), '小区活动');
         this.addButton(new Ext.Button({ text:'子女教育交流' }), '子女教育交流');
         this.addButton(new Ext.Button({ text:'周边商讯点评' }), '周边商讯点评');
         this.addButton(new Ext.Button({ text:'灌水', badgeText: '23' }), '灌水');
-        this.addButton(new Ext.Button({ text:'家政服务', badgeText: '2' }), '家政服务');
+        this.addButton(new Ext.Button({ text:'家政服务', badgeText: '2' }), '家政服务'); */
+        this.addButtonByStore(mzst.models.components);
         
-       
         
         // Call parent (required)
         mzst.GroupButtonPanel.superclass.onRender.apply(this, arguments);
@@ -80,14 +82,34 @@ mzst.GroupButtonPanel = Ext.extend(Ext.Panel, {
                break;
            }
       }
-      if (obj)
-          this.container_list[this.container_list.length-1].remove(obj);
-      if (this.button_list.length%this.column_item==0)
-      { 
-          this.container_list[this.container_list.length-2].remove(obj);
-          this.container_list[this.container_list.length-2].add(this.button_list[0].obj);
-          this.container_list.splice(this.container_list.length-1,1);
+      if (obj){
+          
+          if (this.button_list.length%this.column_item==0){ 
+              this.container_list[this.container_list.length-2].remove(obj);
+              this.container_list[this.container_list.length-2].add(this.button_list[0].obj);
+              this.container_list.splice(this.container_list.length-1,1);
+          }else{
+              this.container_list[this.container_list.length-1].remove(obj);
+          }
       }
+   },
+   deleteAllButton: function(){
+       this.removeAll();
+       this.button_list = [];
+       this.container_list =[];
+       
+       this.addButton(new Ext.Button({iconMask: true, ui: 'plain', iconCls: 'add', width:'100', height: '100',text:'添加', handler: goAddComponentsPanel}), '添加');
+       
+       
+   },
+   addButtonByStore: function(store){
+       
+       store.each(function(record){
+           if (record.get('valid'))
+               this.addButton(new Ext.Button({ text: record.get('text'), /*badgeText: '12',*/ panel_id:record.get('panel_id'), handler: function(){ changeCarouselItem(this.panel_id);} }), record.get('text'));
+       }, this);
+       
+       
    }
 });
 
