@@ -24,6 +24,28 @@ mzst.views.StartupPanel = Ext.extend(Ext.Panel,{
                             mzst.views.mainpanel
                     ]
                 });
+            mzst.views.moreconfigurepanel = new mzst.views.MoreConfigurePanel();
+            mzst.views.carouselpanel.add(  mzst.views.moreconfigurepanel );
+            mzst.views.xiaoqupanel = new mzst.views.XiaoQuListPanel();
+            mzst.views.carouselpanel.add(  mzst.views.xiaoqupanel );
+            mzst.views.xiaoqudetailpanel = new mzst.views.XiaoQuDetailPanel();
+            mzst.views.carouselpanel.add(   mzst.views.xiaoqudetailpanel  );
+            mzst.views.morepanel = new mzst.views.MorePanel();
+            mzst.views.carouselpanel.add(  mzst.views.morepanel );
+            mzst.views.selectneighborpanel = new mzst.views.SelectNeighborListPanel();
+            mzst.views.carouselpanel.add(  mzst.views.selectneighborpanel );
+           mzst.views.collectionpanel = new mzst.views.CollectionListPanel();
+           mzst.views.carouselpanel.add(  mzst.views.collectionpanel );
+           mzst.views.sendmessagepanel = new mzst.views.SendMessageListPanel();
+           mzst.views.carouselpanel.add(  mzst.views.sendmessagepanel );
+            mzst.views.messagepanel = new mzst.views.MessageListPanel();
+            mzst.views.carouselpanel.add(  mzst.views.messagepanel );
+            mzst.views.feedpanel = new mzst.views.FeedListPanel();
+            mzst.views.carouselpanel.add(  mzst.views.feedpanel );
+            mzst.views.neighborpanel = new mzst.views.NeighborPanel();
+            mzst.views.carouselpanel.add( mzst.views.neighborpanel);
+            mzst.views.neighbordetailpanel = new mzst.views.NeighborDetailPanel();
+            mzst.views.carouselpanel.add( mzst.views.neighbordetailpanel);
             mzst.views.wyinfolistpanel = new mzst.views.WYInfoListPanel();
             mzst.views.carouselpanel.add( mzst.views.wyinfolistpanel);
             mzst.views.wyinfodetailpanel = new mzst.views.WYInfoDetailPanel();
