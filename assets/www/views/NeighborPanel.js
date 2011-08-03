@@ -4,9 +4,13 @@ var paging = new Ext.plugins.ListPagingPlugin({
     autoPaging: false,
     onPagingTap: function(){
         var list = Ext.getCmp("mzst_neighbor_panel_inner_list");
-        list.store.removeAll();
+        //list.store.removeAll();
        // list.store.add(mzst.stores.wyinfo);
         //list.store.load({params:{start:0, limit:25}});
+        
+        mzst.models.lj.load();
+        
+        Ext.getCmp("mzst_neighbor_panel_inner_list").refresh();
     }
 });
 
@@ -50,7 +54,7 @@ mzst.views.NeighborPanel = Ext.extend(Ext.Panel,{
         
         items: [{ iconMask: true, ui: 'back', iconCls: 'reply', handler: goMainPage }].concat([{xtype: 'spacer'}]).concat([{ iconMask: true, iconCls: 'refresh',handler: function() {                                   
             // Ext.getCmp("mzst_wy_info_detail_inner_tabpanel").getActiveItem().items.get(0).store.removeAll();
-            this.getActiveItem().get(0).store.read();
+            Ext.getCmp("mzst_neighbor_panel_inner_list").store.read();
         } }])
    },{
        xtype: 'toolbar',
@@ -64,5 +68,7 @@ mzst.views.NeighborPanel = Ext.extend(Ext.Panel,{
        items: [{xtype: 'spacer'}].concat(mainPanelBottomButtonsGroup).concat([{xtype: 'spacer'}])
        
        }],
-   items: [new mzst.views.NeighborPanelInnerList({store: mzst.stores.neighbor })]
+   items: [new mzst.views.NeighborPanelInnerList({store: mzst.models.lj })]
 });
+
+mzst.models.lj.on("load", function(){Ext.getCmp("mzst_neighbor_panel_inner_list").refresh();});

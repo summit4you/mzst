@@ -3,8 +3,6 @@ var tapHandler = function(button, event) {
             Ext.getCmp('main-panel').update(txt);
         };
 
-
-
 mzst.views.MainPanel = Ext.extend(Ext.Panel,{
     layout: 'fit',
    
@@ -16,6 +14,7 @@ mzst.views.MainPanel = Ext.extend(Ext.Panel,{
     
     
     dockedItems: [{
+        id: "mzst_main_panel_toolbar",
         xtype: 'toolbar',
         // Note, you can pass in not only some text, but also a block of HTML, including a base64 encoded image.
         title: '万科四季花城',
@@ -41,8 +40,74 @@ mzst.views.MainPanel = Ext.extend(Ext.Panel,{
         
        // Ext.apply(this,{item:[new mzst.GroupButtonPanel()]});
         
+       
+        
         mzst.views.MainPanel.superclass.initComponent.apply(this, arguments);
         
+    },
+
+    afterRender: function(){
+        mzst.views.MainPanel.superclass.afterRender.call(this);
+        this.refresh();
+      
+        
+    },
+
+    refresh: function() {
+        if (!this.rendered) {
+            return;
+        }
+       
+     
+     
+      if (mzst.models.space.getCount()<=0)
+      {
+          var thisPanel = this;
+          mzst.jsonpmask.show();
+          mzst.models.space.on("load", function(){Ext.util.JSONP.request({
+              url: getDataFrom("xiaoqu.php"),
+              callbackKey: 'callback',
+              scope: thisPanel,    // it is important
+              params: {
+                  uid:  mzst.models.space.getAt(0).get("uid"),
+                  lid:  mzst.models.space.getAt(0).get("lid")
+              },
+              scriptTag: true,
+              callback: function(data) {
+                  thisPanel.dockedItems.items[0].setTitle(data.loupan);
+                 mzst.jsonpmask.hide();
+                 
+              }
+          });mzst.models.lj.load( {params: {
+              uid: mzst.models.space.getAt("0").get("uid"),
+              lid: mzst.models.space.getAt("0").get("lid")
+          }});});
+          mzst.models.space.load();
+      }else{
+          mzst.jsonpmask.show();
+      Ext.util.JSONP.request({
+            url: getDataFrom("xiaoqu.php"),
+            callbackKey: 'callback',
+            scope: this,    // it is important
+            params: {
+                uid:  mzst.models.space.getAt(0).get("uid"),
+                lid:  mzst.models.space.getAt(0).get("lid")
+            },
+            scriptTag: true,
+            callback: function(data) {
+               this.dockedItems.items[0].setTitle(data.loupan);
+               mzst.jsonpmask.hide();
+               
+            }
+        });
+      mzst.models.lj.load( {params: {
+          uid: mzst.models.space.getAt("0").get("uid"),
+          lid: mzst.models.space.getAt("0").get("lid")
+      }});
+      }
+     
     }
        
 });
+
+

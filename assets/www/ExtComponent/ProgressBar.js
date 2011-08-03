@@ -53,6 +53,8 @@ mzst.ProgressBar = Ext.extend(Ext.Component, {
         
         // Call parent (required)
         
+        
+        
         Ext.applyIf(this.renderData, {  
             width: this.canvas_width,  
             height: this.canvas_height,

@@ -137,3 +137,8 @@ var mainPanelBottomButtonsGroup = [{
     }
     ]
 }];
+
+
+//Ext.Ajax.on("beforerequest", function(){mzst.jsonpmask.show();});  
+//Ext.Ajax.on("requestcomplete", function(){mzst.jsonpmask.hide();});  
+//Ext.util.JSONP.on("requestexception", function(){mzst.jsonpmask.hide();Ext.msg.alert('读取数据异常');});  

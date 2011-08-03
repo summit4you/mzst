@@ -104,8 +104,8 @@ mzst.views.secondhandInnerDetailTpl = function(){
 
 mzst.views.neighborPanelInnerListItemTpl = function(){
     return '<div class="thumb_list">'+
-            '<div class="avatar48"><a href="javascript:;" onclick="goNeighborDetailPage();"><img src="{image_url}" alt="{username}" width="48" height="48"></a></div>'+
-            '<div class="thumbTitle"><p><a href="javascript:;" onclick="goNeighborDetailPage();" style="color:red;">{username}</a> <p><p> <img src="theming/images/admin.gif" align="absmiddle" /> <img src="theming/images/vip.gif" align="absmiddle" /></p></div>'+
+            '<div class="avatar48"><a href="javascript:;" onclick="goNeighborDetailPage();"><img src="{image_url}" alt="{name}" width="48" height="48"></a></div>'+
+            '<div class="thumbTitle"><p><a href="javascript:;" onclick="goNeighborDetailPage();" style="color:red;">{name}</a> <p><p> <img src="theming/images/admin.gif" align="absmiddle" /> <img src="theming/images/vip.gif" align="absmiddle" /></p></div>'+
             '<div class="config"><p><a href="" class="config_setting">设置</a></p> <p><a href="javascript:;" onclick="showHumanCertification()" class="config_know">我认识TA</a></p></div>'+
             '</div>';
 }
@@ -190,9 +190,9 @@ mzst.views.selectneighborPanelInnerListItemTpl = function(){
 
     return '<div class=" x-field x-field-checkbox x-label-align-left">'+
     '<div class="commentsTxt x-form-label" style="width: 80%; ">'+
-   '<a href="" title="{username}"><img class="picborder_l" namecard="true" uid="1238780744" title="{username}" src="{image_url}" ></a>'+
+   '<a href="" title="{name}"><img class="picborder_l" namecard="true" uid="1238780744" title="{name}" src="{image_url}" ></a>'+
    '<div class="commentsContants">'+
-   '<p class="commentsParm MIB_txtal"><a namecard="true" uid="1238780744" href="">{username}</a></p><p>{description}({datetime})</p>'+
+   '<p class="commentsParm MIB_txtal"><a namecard="true" uid="1238780744" href="">{name}</a></p><p>{description}({datetime})</p>'+
    '</div>'+
    '<input  type="checkbox" class="x-input-checkbox"  '+
    '<tpl if="checked"> checked </tpl> '+  // in tpl if , you could not use  {}
