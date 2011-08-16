@@ -85,6 +85,34 @@ function showWarningHumanCertification(){
     
 }
 
+function cpIdentify(id){
+    
+   /* Ext.Ajax.request({
+        url: getDataFrom("cp_identify.php"),
+        method: 'get',
+       
+        success: function(response) {
+             //Reponse
+            alert(response);
+        }
+    }); */
+    
+    Ext.util.JSONP.request({
+        url: getDataFrom("cp_identify.php"),
+        callbackKey: 'callback',
+        params: {
+            op: "checked",
+            uid: id,
+            supe_uid: mzst.stores.space.getAt(0).get("uid"),
+            dummy: new Date().getTime(),
+        },
+        scriptTag: true,
+        callback: function(data) {
+           eval(data.script);
+        }
+    });
+}
+
 function showHumanCertification(){
     Ext.Msg.show({
         title:'人肉认证',
@@ -93,6 +121,13 @@ function showHumanCertification(){
         //fn: processResult,
         animEl: 'elId'
      });
+}
+
+// check he is or is not you
+function isSelf(uid){
+    if(mzst.stores.space.getfield("uid")==uid){
+        return true;
+    }else{ return false; }
 }
 
 var mainPanelBottomButtonsGroup = [{

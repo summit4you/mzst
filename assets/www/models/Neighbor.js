@@ -106,15 +106,15 @@ Ext.data.ProxyMgr.registerType("mzstljstorage",
                 }else 
                 {
                    
-                    if (mzst.models.lj.getCount()<this.totalCount)
+                    if (mzst.stores.lj.getCount()<this.totalCount)
                         this.params.page = this.params.page+1;
                     else
                         return ;
                 }
                 if (this.params.uid=="") 
                 {
-                    this.params.uid = mzst.models.space.getAt("0").get("uid");
-                    this.params.lid = mzst.models.space.getAt("0").get("lid")
+                    this.params.uid = mzst.stores.space.getAt("0").get("uid");
+                    this.params.lid = mzst.stores.space.getAt("0").get("lid")
                 }
                
                 Ext.util.JSONP.request({
@@ -128,9 +128,9 @@ Ext.data.ProxyMgr.registerType("mzstljstorage",
                         
                         var records = [];
                         // add the orign data
-                        if (mzst.models.lj.getCount()>0)
-                            for (var i=0; i<mzst.models.lj.getCount(); i++)
-                                   records.push(mzst.models.lj.getAt(i));
+                        if (mzst.stores.lj.getCount()>0)
+                            for (var i=0; i<mzst.stores.lj.getCount(); i++)
+                                   records.push(mzst.stores.lj.getAt(i));
                         for (var i=0; i<data.length-1; i++){
                             
                             var record = new mzst.models.LJ({
@@ -182,10 +182,10 @@ Ext.data.ProxyMgr.registerType("mzstljstorage",
         })
     );
 
-mzst.models.lj = new Ext.data.Store({
-    model: "app.models.LJ",
+mzst.stores.lj = new Ext.data.Store({
+    model: "mzst.models.LJ",
     proxy: {
         type: "mzstljstorage",
-        model: "app.models.LJ"
+        model: "mzst.models.LJ"
     }
 });

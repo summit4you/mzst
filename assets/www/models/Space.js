@@ -81,12 +81,18 @@ mzst.models.Space=Ext.regModel('mzst.models.Space', {
     {name: 'workplaceinvitenum', type: 'string'},
     {name: 'pokenum', type: 'string'},
     {name: 'allnotenum', type: 'string'},
+    {name: 'image_url', type: 'string'},
+    {name: 'creditstar', type: 'string'}
     ]
    
 });
 
 Ext.data.ProxyMgr.registerType("mzstspacestorage",
         Ext.extend(Ext.data.Proxy, {
+            params: {
+                uid: mzst.models.configure.getAt("0").get("uid")
+            },
+            
             create: function(operation, callback, scope) {
             },
             read: function(operation, callback, scope) {
@@ -97,9 +103,7 @@ Ext.data.ProxyMgr.registerType("mzstspacestorage",
                     callbackKey: 'callback',
                     scope: this,    // it is important
                   
-                    params: {
-                        uid: mzst.models.configure.getAt("0").get("uid")
-                    },
+                    params: this.params,
                     scriptTag: true,
                     callback: function(data) {
                         
@@ -186,7 +190,9 @@ Ext.data.ProxyMgr.registerType("mzstspacestorage",
                             liveplaceinvitenum: data.liveplaceinvitenum,
                             workplaceinvitenum: data.workplaceinvitenum,
                             pokenum: data.pokenum,
-                            allnotenum: data.allnotenum
+                            allnotenum: data.allnotenum,
+                            image_url: data.image_url,
+                            creditstar: data.creditstar
                         });
                         
                         records.push(record);
@@ -218,7 +224,18 @@ Ext.data.ProxyMgr.registerType("mzstspacestorage",
         })
     );
 
-mzst.models.space = new Ext.data.Store({
+mzst.stores.space = new Ext.data.Store({
+    model: "app.models.Space",
+    proxy: {
+        type: "mzstspacestorage",
+        model: "app.models.Space"
+    },
+    getfield: function(fieldname){
+        return this.getAt(0).get(fieldname);
+    }
+});
+
+mzst.stores.neighborspace = new Ext.data.Store({
     model: "app.models.Space",
     proxy: {
         type: "mzstspacestorage",

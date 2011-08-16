@@ -31,5 +31,5 @@ mzst.views.NeighborDetailPanel = Ext.extend(Ext.Panel,{
             // Ext.getCmp("mzst_second_hand_detail_inner_tabpanel").getActiveItem().items.get(0).store.read();
         } }])
    }],
-   items: [new mzst.views.NeighborDetailInnerDataView({store: mzst.stores.neighbordetail })],
+   items: [new mzst.views.NeighborDetailInnerDataView({store: mzst.stores.neighborspace })],
 });

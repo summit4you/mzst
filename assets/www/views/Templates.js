@@ -106,7 +106,7 @@ mzst.views.neighborPanelInnerListItemTpl = function(){
     return '<div class="thumb_list">'+
             '<div class="avatar48"><a href="javascript:;" onclick="goNeighborDetailPage();"><img src="{image_url}" alt="{name}" width="48" height="48"></a></div>'+
             '<div class="thumbTitle"><p><a href="javascript:;" onclick="goNeighborDetailPage();" style="color:red;">{name}</a> <p><p> <img src="theming/images/admin.gif" align="absmiddle" /> <img src="theming/images/vip.gif" align="absmiddle" /></p></div>'+
-            '<div class="config"><p><a href="" class="config_setting">设置</a></p> <p><a href="javascript:;" onclick="showHumanCertification()" class="config_know">我认识TA</a></p></div>'+
+            '<div class="config"><p><a href="" class="config_setting">设置</a></p> <p><a href="javascript:;" onclick="cpIdentify(\'{uid}\' )" class="config_know">我认识TA</a></p></div>'+
             '</div>';
 }
 
@@ -117,7 +117,7 @@ mzst.views.neighborInnerDetailTpl = function(){
                     '<span id="item-info" align="center">'+
                         '<div id="item-username">'+
                             '<div><p stype="font-weight: bold;  font-size:16pt;">{username}</p></div>'+
-                            '<div class="config"><p><a href="" class="config_setting">设置</a></p> <p><a href="javascript:;" onclick="showHumanCertification()" class="config_know">我认识TA</a></p></div>'+
+                            '<div class="config"><p><a href="" class="config_setting">设置</a></p> <p><a href="javascript:;" onclick="cpIdentify(\'{uid}\')" class="config_know">我认识TA</a></p></div>'+
                             
                          '</div>'+
                          '<div class="item-huizhang">'+
@@ -138,10 +138,20 @@ mzst.views.neighborInnerDetailTpl = function(){
                 '</div>'+
                 '<div class="user-detail">'+
                 '<ul>'+
-                    '<li class="email"><p>帐号信息：<a>summit_mail@qq.com</a></p></li>'+
-                    '<li><p class="l_item">财&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;富：12345</p><p class="r_item">人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;缘：19 个好友</p></li>'+
-                     '<li><p class="l_item">等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：12345</p><p class="r_item">知&nbsp;&nbsp;名&nbsp;&nbsp;度：已有 123人次访问</p></li>'+
-                     '<li><p>上次登录时间：现在</p></li>'+
+                '<tpl if="email"><li class="email"><p>帐号信息：<a>{email}</a></p></li></tpl>'+
+               '<li><p>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：<a><tpl if="sex">{sex}</tpl><tpl if="sex==\'\'">不男不女</tpl></a></p></li>'+
+               '<li><tpl if="qq"><p>Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q：{qq}</p></tpl></li>'+
+               '<tpl if="friendnum"><li><p>人缘：<a>{friendnum}个好友</a></p></li></tpl>'+
+               '<tpl if="phone"><li><p>联系电话：<a>{phone}</a></p></li></tpl>'+
+               '<tpl if="blood"><li><p>血型：<a>{blood}</a></p></li></tpl>'+
+               '<tpl if="marry"><li><p>婚姻状况：<a><tpl if="marry==1">已婚</tpl><tpl if="marry==0">未婚</tpl></a></p></li></tpl>'+
+               '<tpl if="resideprovince"><li><p>住址：<a>{resideprovince}&nbsp;&nbsp;{residecity}</a></p></li></tpl>'+
+               '<tpl if="birthyear&&birthyear &gt; 1900"><li><p>出生年月：<a>{birthyear}年{birthmonth}月{birthday}日</a></p></li></tpl>'+
+               '<tpl if="credit"><li><p>财富：<a>{credit}</a></p></li></tpl>'+
+               '<tpl if="viewnum"><li><p>知名度：<a>{viewnum}</a></p></li></tpl>'+
+               '<tpl if="activity"><li><p>活跃天数：<a>{activity}</a></p></li></tpl>'+
+               '<li><p>等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级：{creditstar}</p></li>'+
+                '<li><p>上次登录时间：现在</p></li>'+
                 '</ul>'+
                 '</div>'+
                 '<div class="user-button">'+

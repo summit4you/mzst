@@ -8,7 +8,7 @@ var paging = new Ext.plugins.ListPagingPlugin({
        // list.store.add(mzst.stores.wyinfo);
         //list.store.load({params:{start:0, limit:25}});
         
-        mzst.models.lj.load();
+        mzst.stores.lj.load();
         
         Ext.getCmp("mzst_neighbor_panel_inner_list").refresh();
     }
@@ -34,7 +34,10 @@ mzst.views.NeighborPanelInnerList = Ext.extend(Ext.List,{
     
     onItemDisclosure: function (record) {
      // TODO: Render the selected note in the note editor.
-        goNeighborDetailPage();
+        
+        Ext.apply(mzst.stores.neighborspace.proxy, {params: {uid: record.get("uid")}});
+        mzst.stores.neighborspace.load();
+        mzst.stores.neighborspace.on("load", goNeighborDetailPage);
     }
 
     
@@ -68,7 +71,7 @@ mzst.views.NeighborPanel = Ext.extend(Ext.Panel,{
        items: [{xtype: 'spacer'}].concat(mainPanelBottomButtonsGroup).concat([{xtype: 'spacer'}])
        
        }],
-   items: [new mzst.views.NeighborPanelInnerList({store: mzst.models.lj })]
+   items: [new mzst.views.NeighborPanelInnerList({store: mzst.stores.lj })]
 });
 
-mzst.models.lj.on("load", function(){Ext.getCmp("mzst_neighbor_panel_inner_list").refresh();});
+mzst.stores.lj.on("load", function(){Ext.getCmp("mzst_neighbor_panel_inner_list").refresh();});

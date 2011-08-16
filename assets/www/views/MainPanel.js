@@ -60,17 +60,17 @@ mzst.views.MainPanel = Ext.extend(Ext.Panel,{
        
      
      
-      if (mzst.models.space.getCount()<=0)
+      if (mzst.stores.space.getCount()<=0)
       {
           var thisPanel = this;
           mzst.jsonpmask.show();
-          mzst.models.space.on("load", function(){Ext.util.JSONP.request({
+          mzst.stores.space.on("load", function(){Ext.util.JSONP.request({
               url: getDataFrom("xiaoqu.php"),
               callbackKey: 'callback',
               scope: thisPanel,    // it is important
               params: {
-                  uid:  mzst.models.space.getAt(0).get("uid"),
-                  lid:  mzst.models.space.getAt(0).get("lid")
+                  uid:  mzst.stores.space.getAt(0).get("uid"),
+                  lid:  mzst.stores.space.getAt(0).get("lid")
               },
               scriptTag: true,
               callback: function(data) {
@@ -78,11 +78,11 @@ mzst.views.MainPanel = Ext.extend(Ext.Panel,{
                  mzst.jsonpmask.hide();
                  
               }
-          });mzst.models.lj.load( {params: {
-              uid: mzst.models.space.getAt("0").get("uid"),
-              lid: mzst.models.space.getAt("0").get("lid")
+          });mzst.stores.lj.load( {params: {
+              uid: mzst.stores.space.getAt("0").get("uid"),
+              lid: mzst.stores.space.getAt("0").get("lid")
           }});});
-          mzst.models.space.load();
+          mzst.stores.space.load();
       }else{
           mzst.jsonpmask.show();
       Ext.util.JSONP.request({
@@ -90,8 +90,8 @@ mzst.views.MainPanel = Ext.extend(Ext.Panel,{
             callbackKey: 'callback',
             scope: this,    // it is important
             params: {
-                uid:  mzst.models.space.getAt(0).get("uid"),
-                lid:  mzst.models.space.getAt(0).get("lid")
+                uid:  mzst.stores.space.getAt(0).get("uid"),
+                lid:  mzst.stores.space.getAt(0).get("lid")
             },
             scriptTag: true,
             callback: function(data) {
@@ -100,9 +100,9 @@ mzst.views.MainPanel = Ext.extend(Ext.Panel,{
                
             }
         });
-      mzst.models.lj.load( {params: {
-          uid: mzst.models.space.getAt("0").get("uid"),
-          lid: mzst.models.space.getAt("0").get("lid")
+      mzst.stores.lj.load( {params: {
+          uid: mzst.stores.space.getAt("0").get("uid"),
+          lid: mzst.stores.space.getAt("0").get("lid")
       }});
       }
      

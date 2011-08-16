@@ -22,7 +22,7 @@ mzst.models.configure = new Ext.data.Store({
     listeners: {
         load:function(store, records, success){
             if (!records.length){ // if this is the first create store, should begin with 1 note: is not 0!!!!
-                this.add({uid:'86'});
+                this.add({uid:'140'});
                 this.sync();
                 this.save();
             }else{

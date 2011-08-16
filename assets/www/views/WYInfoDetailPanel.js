@@ -69,7 +69,8 @@ mzst.views.WYInfoDetailInnerTabPanel = Ext.extend(Ext.TabPanel,{
                 		 new mzst.views.WYInfoDetailReviewEditor(),
                 		 new Ext.Button({text:"提交", handle: function(){
                 		 	// TODO: send rivews to server
-                		 }}) 
+                		 }})
+                
                 ]
                
             }]
